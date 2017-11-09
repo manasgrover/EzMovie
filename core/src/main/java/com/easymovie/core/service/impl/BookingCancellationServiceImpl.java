@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.easymovie.core.service.BookingCancellationService;
 import com.easymovie.data.entity.BookingStatus;
-import com.easymovie.data.entity.BoookingTransaction;
+import com.easymovie.data.entity.BookingTransaction;
 import com.easymovie.data.sql.handlers.BookingTransactionHandler;
 import com.easymovie.domain.request.CancelBookingRequest;
 import com.easymovie.domain.response.BaseResponse;
@@ -19,7 +19,7 @@ public class BookingCancellationServiceImpl implements BookingCancellationServic
 	public BaseResponse cancelBooking(CancelBookingRequest request) {
 		
 		BaseResponse response = new BaseResponse();
-		BoookingTransaction transaction = bookingTransactionHandler.getBookingTransaction(request.getUserEmail(), request.getBookingId());
+		BookingTransaction transaction = bookingTransactionHandler.getBookingTransaction(request.getUserEmail(), request.getBookingId());
 		
 		if(transaction != null && transaction.getBookingStatus() == BookingStatus.BOOKED){
 			transaction.setBookingStatus(BookingStatus.CANCELED);

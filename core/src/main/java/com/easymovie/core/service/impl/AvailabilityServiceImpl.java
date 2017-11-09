@@ -61,7 +61,7 @@ public class AvailabilityServiceImpl implements AvailabiltyService{
 	}
 	
 	public SlotAvailaibilityResponse getSlotAvailability(SlotAvailaibilityRequest availabiltyRequest) {
-		List<Availabilty> availability = availabilityHandler.getTimeSlotScheduleByDateAndTheatreName(availabiltyRequest.getTheatreName(),availabiltyRequest.getDate());
+		List<Availabilty> availability = availabilityHandler.getTimeSlotScheduleByDateAndTheatreNameAndMovieName(availabiltyRequest.getTheatreName(),availabiltyRequest.getDate(),availabiltyRequest.getMovie());
 		List<Integer> seatNumbers = availability.stream().filter(t -> t.getAvailable()).map(t -> t.getSeatNumber()).collect(Collectors.toList());
 		SlotAvailaibilityResponse response = new SlotAvailaibilityResponse();
 		response.setSeatNumbers(seatNumbers);

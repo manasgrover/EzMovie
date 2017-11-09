@@ -46,7 +46,9 @@ public class Availabilty extends BaseEntity {
 
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "booking_id")
-	private BoookingTransaction bookingTransaction;
+	private BookingTransaction bookingTransaction;
+	
+	private String movie;
 
 	public Long getAvailabilityId() {
 		return availabilityId;
@@ -96,12 +98,19 @@ public class Availabilty extends BaseEntity {
 		this.available = available;
 	}
 
-	public BoookingTransaction getBookingTransaction() {
+	public BookingTransaction getBookingTransaction() {
 		return bookingTransaction;
 	}
 
-	public void setBookingTransaction(BoookingTransaction bookingTransaction) {
+	public void setBookingTransaction(BookingTransaction bookingTransaction) {
 		this.bookingTransaction = bookingTransaction;
 	}
 
+	public String getMovie() {
+		return movie;
+	}
+
+	public void setMovie(String movie) {
+		this.movie = movie;
+	}
 }

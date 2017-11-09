@@ -1,11 +1,11 @@
 package com.easymovie.data.sql.handlers;
 
-import com.easymovie.data.entity.BoookingTransaction;
+import com.easymovie.data.entity.BookingTransaction;
 
 public interface BookingTransactionHandler {
 
-	public BoookingTransaction getBookingTransaction(String userEmail, Long bookingId);
+	public BookingTransaction getBookingTransaction(String userEmail, Long bookingId);
 	
-	public void save(BoookingTransaction bookingTransaction);
+	public void save(BookingTransaction bookingTransaction);
 
 }

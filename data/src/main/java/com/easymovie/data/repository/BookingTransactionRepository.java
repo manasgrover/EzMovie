@@ -5,14 +5,14 @@ package com.easymovie.data.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.easymovie.data.entity.BoookingTransaction;
+import com.easymovie.data.entity.BookingTransaction;
 
 /**
  * @author Manas Grover
  *
  */
-public interface BookingTransactionRepository extends JpaRepository<BoookingTransaction, Long> {
+public interface BookingTransactionRepository extends JpaRepository<BookingTransaction, Long> {
 
-	public BoookingTransaction findByUserEmailAndId(String userEmail, Long bookingId);
+	public BookingTransaction findByUserEmailAndId(String userEmail, Long bookingId);
 
 }

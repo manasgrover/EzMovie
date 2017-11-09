@@ -27,6 +27,8 @@ public class TimeSlot extends BaseEntity {
 	private Long startTime;
 
 	private Long endTime;
+	
+	private Double price;
 
 	public Long getId() {
 		return id;
@@ -50,6 +52,14 @@ public class TimeSlot extends BaseEntity {
 
 	public void setEndTime(Long endTime) {
 		this.endTime = endTime;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 
 }

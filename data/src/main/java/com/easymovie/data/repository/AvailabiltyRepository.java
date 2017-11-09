@@ -17,5 +17,7 @@ import com.easymovie.data.entity.Availabilty;
 public interface AvailabiltyRepository extends JpaRepository<Availabilty, Long>{
 	
 	public List<Availabilty> findByDateAndAudiTheatreName(Date date,String audiTheatreName);
+	
+	public List<Availabilty> findByDateAndAudiTheatreNameAndMovie(Date date,String audiTheatreName,String movie);
 
 }

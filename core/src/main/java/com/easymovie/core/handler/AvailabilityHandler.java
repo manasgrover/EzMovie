@@ -51,5 +51,8 @@ public class AvailabilityHandler {
 	public List<Availabilty> getTimeSlotScheduleByDateAndTheatreName(String theatreName,Date date){
 		return availabiltyRepository.findByDateAndAudiTheatreName(date, theatreName);
 	}
+	public List<Availabilty> getTimeSlotScheduleByDateAndTheatreNameAndMovieName(String theatreName,Date date,String movieName){
+		return availabiltyRepository.findByDateAndAudiTheatreNameAndMovie(date, theatreName, movieName);
+	}
 
 }

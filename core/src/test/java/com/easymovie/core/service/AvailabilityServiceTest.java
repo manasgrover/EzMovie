@@ -4,19 +4,24 @@
 package com.easymovie.core.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.easymovie.data.entity.Audi;
+import com.easymovie.data.entity.Availabilty;
 import com.easymovie.data.entity.City;
 import com.easymovie.data.entity.Country;
 import com.easymovie.data.entity.Location;
 import com.easymovie.data.entity.State;
 import com.easymovie.data.entity.Theatre;
+import com.easymovie.data.entity.TimeSlot;
 import com.easymovie.data.repository.AudiRepository;
+import com.easymovie.data.repository.AvailabiltyRepository;
 import com.easymovie.data.repository.TheatreRepository;
+import com.easymovie.data.repository.TimeSlotRepository;
 
 /**
  * @author Manas Grover
@@ -32,6 +37,12 @@ public class AvailabilityServiceTest extends BaseTest{
 	
 	@Autowired
 	AudiRepository audiRepository;
+	
+	@Autowired
+	TimeSlotRepository timeSlotRepository;
+	
+	@Autowired
+	AvailabiltyRepository availabiltyRepository;
 	
 	@Test
 	public void checkAvailabilityByMovieName(){
@@ -67,10 +78,21 @@ public class AvailabilityServiceTest extends BaseTest{
 		audiRepository.save(audi);
 		audiRepository.save(audi2);
 		Assert.assertNotNull(theatreRepository.findAll().get(0).getAudiList());
-	
 		
 		
+		TimeSlot timeSlot = new TimeSlot();
+		timeSlot.setStartTime((new Date()).getTime());
+		timeSlot.setEndTime((new Date()).getTime());
+		timeSlotRepository.save(timeSlot);
 		
+		Availabilty availabilty = new Availabilty();
+		availabilty.setAudi(audi2);
+		availabilty.setAvailable(true);
+		availabilty.setTimeSlot(timeSlot);
+		availabilty.setSeatNumber(1);
+		
+		availabiltyRepository.save(availabilty);
+		availabiltyRepository.findAll();
 	}
 
 }

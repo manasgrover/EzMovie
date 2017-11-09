@@ -26,7 +26,7 @@ import org.hibernate.envers.Audited;
 @AuditOverride(forClass = BaseEntity.class)
 @Audited
 @Entity
-public class BoookingTransaction extends BaseEntity {
+public class BookingTransaction extends BaseEntity {
 
 	private String userEmail;
 

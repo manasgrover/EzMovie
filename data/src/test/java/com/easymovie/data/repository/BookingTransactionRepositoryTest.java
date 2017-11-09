@@ -11,7 +11,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.easymovie.data.entity.Audi;
-import com.easymovie.data.entity.BoookingTransaction;
+import com.easymovie.data.entity.BookingTransaction;
 import com.easymovie.data.entity.City;
 import com.easymovie.data.entity.Country;
 import com.easymovie.data.entity.Location;
@@ -87,7 +87,7 @@ public class BookingTransactionRepositoryTest extends BaseTest{
 		movie.setDescription("Great");
 		movieRepository.save(movie);
 		
-		BoookingTransaction transaction = new BoookingTransaction();
+		BookingTransaction transaction = new BookingTransaction();
 /*		transaction.setAudi(audi);
 		transaction.setTimeSlot(timeSlot);
 */		transaction.setUserEmail("manas@gmail.com");

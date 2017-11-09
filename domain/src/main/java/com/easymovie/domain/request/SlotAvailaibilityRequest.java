@@ -4,7 +4,6 @@
 package com.easymovie.domain.request;
 
 import java.util.Date;
-import java.util.List;
 
 import com.easymovie.data.entity.TimeSlot;
 
@@ -17,6 +16,7 @@ public class SlotAvailaibilityRequest extends BaseRequest {
 	private Date date;
 	private TimeSlot timeSlot;
 	private String theatreName;
+	private String movie;
 	public Date getDate() {
 		return date;
 	}
@@ -34,5 +34,11 @@ public class SlotAvailaibilityRequest extends BaseRequest {
 	}
 	public void setTheatreName(String theatreName) {
 		this.theatreName = theatreName;
+	}
+	public String getMovie() {
+		return movie;
+	}
+	public void setMovie(String movie) {
+		this.movie = movie;
 	}
 }
