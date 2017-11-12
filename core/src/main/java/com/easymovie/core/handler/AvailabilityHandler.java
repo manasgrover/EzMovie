@@ -48,10 +48,7 @@ public class AvailabilityHandler {
 		scheduleList.stream().filter(t -> (t.getAudi().getTheatre().getName().equals(thatreName)));
 		return scheduleList;
 	}
-	public List<Availabilty> getTimeSlotScheduleByDateAndTheatreName(String theatreName,Date date){
-		return availabiltyRepository.findByDateAndAudiTheatreName(date, theatreName);
-	}
-	public List<Availabilty> getTimeSlotScheduleByDateAndTheatreNameAndMovieName(String theatreName,Date date,String movieName){
+	public List<Availabilty> getTimeSlotScheduleByDateAndTheatreNameAndMovieName(String theatreName,Long date,String movieName){
 		return availabiltyRepository.findByDateAndAudiTheatreNameAndMovie(date, theatreName, movieName);
 	}
 
