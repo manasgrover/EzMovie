@@ -5,6 +5,7 @@ package com.easymovie.core.handler;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -50,6 +51,15 @@ public class AvailabilityHandler {
 	}
 	public List<Availabilty> getTimeSlotScheduleByDateAndTheatreNameAndMovieName(String theatreName,Long date,String movieName){
 		return availabiltyRepository.findByDateAndAudiTheatreNameAndMovie(date, theatreName, movieName);
+	}
+	
+	public List<Availabilty> getAvailabilityByDateAndAudiAudiIdAndTimeSlotIdAndMovie(Long date, Long audiId, Long timeSlotId, String movieName){
+		return availabiltyRepository.findByDateAndAudiAudiIdAndTimeSlotIdAndMovieAndAvailableIsTrue(date, audiId, timeSlotId, movieName);
+	}
+	
+	public List<Availabilty> saveIfAvailable(List<Availabilty> availabilityList){
+		List<Long> availIds = availabilityList.stream().map(Availabilty::getAvailabilityId).collect(Collectors.toList());
+		return availabiltyRepository.updateAvailabilityIfAvailable(availabilityList.get(0).getBookingTransaction(), availIds);
 	}
 
 }
