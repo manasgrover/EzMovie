@@ -57,9 +57,13 @@ public class AvailabilityHandler {
 		return availabiltyRepository.findByDateAndAudiAudiIdAndTimeSlotIdAndMovieAndAvailableIsTrue(date, audiId, timeSlotId, movieName);
 	}
 	
-	public List<Availabilty> saveIfAvailable(List<Availabilty> availabilityList){
+	public int saveIfAvailable(List<Availabilty> availabilityList){
 		List<Long> availIds = availabilityList.stream().map(Availabilty::getAvailabilityId).collect(Collectors.toList());
-		return availabiltyRepository.updateAvailabilityIfAvailable(availabilityList.get(0).getBookingTransaction(), availIds);
+		return availabiltyRepository.updateAvailabilityOnlyIfAvailableIsTrue(availabilityList.get(0).getBookingTransaction(), availIds);
+	}
+	
+	public int save(List<Availabilty> availabilityList){
+		return availabiltyRepository.save(availabilityList).size();
 	}
 
 }

@@ -94,7 +94,7 @@ public class BookingServiceImpl implements BookingService {
 		
 		requestedSeatAvailabilityList.stream().forEach(a -> {
 			a.setBookingTransaction(transaction);
-			a.setAvailable(true);
+			a.setAvailable(false);
 			});
 		
 		response.setMovie(movie);
@@ -108,8 +108,30 @@ public class BookingServiceImpl implements BookingService {
 		if(transaction.getId() != null){
 			response.setStatus("SUCCESS");
 			transaction.setAvailabilty(requestedSeatAvailabilityList);
-			List<Availabilty> updatedAvailabilties = availabilityHandler.saveIfAvailable(availabilityList);
-			System.out.println(updatedAvailabilties);
+			int updatedAvailabiltyCount = availabilityHandler.saveIfAvailable(requestedSeatAvailabilityList);
+			
+			if(updatedAvailabiltyCount != requestedSeatAvailabilityList.size()){
+				//Rollback updated seats and return Seat_Unavailable
+				BookingTransaction bookingTransaction = bookingTransactionHandler.getBookingTransaction(transaction.getId());
+				if(bookingTransaction != null){
+					List<Availabilty> toBeRolledBackAvailabilities = bookingTransaction.getAvailabilty();
+					if(toBeRolledBackAvailabilities != null && !toBeRolledBackAvailabilities.isEmpty()){
+						toBeRolledBackAvailabilities.stream().forEach(a -> {
+							a.setAvailable(true);
+							a.setBookingTransaction(null);
+						});
+					}
+					availabilityHandler.save(toBeRolledBackAvailabilities);
+					bookingTransaction.setBookingStatus(BookingStatus.ROLLEDBACK);
+					bookingTransaction.setAvailabilty(null);
+					bookingTransactionHandler.save(bookingTransaction);
+				}
+				
+				response.setErrorCode("SEAT_UNAVAILABLE");
+				response.setErrorMessage("All Requested seats are not available");
+				response.setStatus("FAILURE");
+			}
+			
 		}		
 
 		return response;

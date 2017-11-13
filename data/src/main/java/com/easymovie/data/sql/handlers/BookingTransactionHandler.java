@@ -6,6 +6,8 @@ public interface BookingTransactionHandler {
 
 	public BookingTransaction getBookingTransaction(String userEmail, Long bookingId);
 	
+	public BookingTransaction getBookingTransaction(Long bookingId);
+	
 	public void save(BookingTransaction bookingTransaction);
 
 }

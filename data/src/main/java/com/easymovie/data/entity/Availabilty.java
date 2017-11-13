@@ -3,6 +3,7 @@
  */
 package com.easymovie.data.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -44,7 +45,7 @@ public class Availabilty extends BaseEntity {
 
 	private Boolean available;
 
-	@ManyToOne(optional = true)
+	@ManyToOne(optional = true, cascade=CascadeType.ALL)
 	@JoinColumn(name = "booking_id")
 	private BookingTransaction bookingTransaction;
 	

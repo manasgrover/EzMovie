@@ -20,5 +20,10 @@ public class BookingTransactionHandlerImpl implements BookingTransactionHandler 
 	public void save(BookingTransaction bookingTransaction) {
 		bookingTransactionRepository.save(bookingTransaction);
 	}
+
+	@Override
+	public BookingTransaction getBookingTransaction(Long bookingId) {
+		return bookingTransactionRepository.findOne(bookingId);
+	}
 	
 }

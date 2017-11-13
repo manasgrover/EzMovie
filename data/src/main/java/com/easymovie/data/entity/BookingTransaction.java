@@ -34,7 +34,7 @@ public class BookingTransaction extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@OneToMany(mappedBy = "bookingTransaction", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "bookingTransaction", fetch = FetchType.EAGER)
 	// @JoinColumn(name = "availability_id", updatable=false)
 	private List<Availabilty> availabilty;
 

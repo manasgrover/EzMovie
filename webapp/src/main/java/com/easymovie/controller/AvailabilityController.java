@@ -26,12 +26,12 @@ public class AvailabilityController {
 	@Autowired
 	AvailabiltyService availabiltyService;
 	
-	@PostMapping(value = "/availability", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	@PostMapping(value = "/availability", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody AvailabilityResponse executeAvailabiltyRequest(@RequestBody AvailabiltyRequest availabiltyRequest) {
 		return availabiltyService.getAvailability(availabiltyRequest);
 	}
 	
-	@PostMapping(value = "/slotAvailability", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	@PostMapping(value = "/slotAvailability", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody SlotAvailaibilityResponse executeSlotAvailabiltyRequest(@RequestBody SlotAvailaibilityRequest availabiltyRequest) {
 		return availabiltyService.getSlotAvailability(availabiltyRequest);
 	}
