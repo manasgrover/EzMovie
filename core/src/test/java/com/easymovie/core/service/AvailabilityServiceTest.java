@@ -12,6 +12,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.core.util.datetime.FixedDateFormat;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -34,6 +35,7 @@ import com.easymovie.data.repository.TimeSlotRepository;
 import com.easymovie.domain.request.AvailabiltyRequest;
 import com.easymovie.domain.request.AvailabiltyRequestTypeEnum;
 import com.easymovie.domain.request.SlotAvailaibilityRequest;
+import com.easymovie.core.service.BaseTest;
 
 /**
  * @author Manas Grover
@@ -62,8 +64,9 @@ public class AvailabilityServiceTest extends BaseTest{
 	@Autowired
 	AudiScheduleRepository audiScheduleRepository;
 	
-	@Test
-	public void checkAvailabilityByMovieName() throws ParseException{
+	@Before
+	public void prepareData() throws ParseException{/*
+
 		
 		
 		SimpleDateFormat dt = new SimpleDateFormat("MM/dd/yyyy");
@@ -136,17 +139,42 @@ public class AvailabilityServiceTest extends BaseTest{
 		
 		availabiltyRepository.save(availabilty);
 		availabiltyRepository.findAll();
+	*/}
+	
+	@Test
+	public void checkSlotAvailabilityByMovieName() throws ParseException{
 		
+		SlotAvailaibilityRequest slotAvailaibilityRequest = new SlotAvailaibilityRequest();
+		slotAvailaibilityRequest.setDate(new Date());
+		slotAvailaibilityRequest.setTheatreName("PVR");
+		slotAvailaibilityRequest.setMovie("RDB");
+		availabiltyService.getSlotAvailability(slotAvailaibilityRequest);
+	}
+	
+	@Test
+	public void testForAvailabilityByMovie(){
 		AvailabiltyRequest availabiltyRequest = new AvailabiltyRequest();
 		availabiltyRequest.setMovieName("RDB");
 		availabiltyRequest.setDate(new Date());
 		availabiltyRequest.setAvailabiltyRequestTypeEnum(AvailabiltyRequestTypeEnum.MOVIE);
 		Assert.assertNotNull(availabiltyService.getAvailability(availabiltyRequest).getAvailabilityMap());
-		SlotAvailaibilityRequest slotAvailaibilityRequest = new SlotAvailaibilityRequest();
-		slotAvailaibilityRequest.setDate(new Date());
-		slotAvailaibilityRequest.setTheatreName(theatre.getName());
-		slotAvailaibilityRequest.setMovie(movie.getMovieName());
-		availabiltyService.getSlotAvailability(slotAvailaibilityRequest);
+	}
+	@Test
+	public void testForAvailabilityByTheatre(){
+		AvailabiltyRequest availabiltyRequest = new AvailabiltyRequest();
+		availabiltyRequest.setTheatreName("PVR");
+		availabiltyRequest.setDate(new Date());
+		availabiltyRequest.setAvailabiltyRequestTypeEnum(AvailabiltyRequestTypeEnum.THEATRE);
+		Assert.assertNotNull(availabiltyService.getAvailability(availabiltyRequest).getAvailabilityMap());
+	}
+	
+	@Test
+	public void testForAvailabilityByLocation(){
+		AvailabiltyRequest availabiltyRequest = new AvailabiltyRequest();
+		availabiltyRequest.setCityName("DELHI");
+		availabiltyRequest.setDate(new Date());
+		availabiltyRequest.setAvailabiltyRequestTypeEnum(AvailabiltyRequestTypeEnum.LOCATION);
+		Assert.assertNotNull(availabiltyService.getAvailability(availabiltyRequest).getAvailabilityMap());
 	}
 
 }
