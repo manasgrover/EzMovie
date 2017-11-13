@@ -49,13 +49,6 @@ public class BookingServiceTest extends BaseTest {
 		bookingRequest.setUserEmail("manasgrover7789@gmail.com");
 	}
 	
-//	@Test
-	public void cancelBookingTest(){
-		Assert.assertEquals("SUCCESS", (service.cancelBooking(cancelBookingRequest)).getStatus());
-		Assert.assertFalse(availabiltyRepository.findAll().stream().filter(av -> !av.getAvailable()).findAny().isPresent());
-		Assert.assertFalse(bookingTransactionRepository.findAll().stream().filter(transaction -> transaction.getBookingStatus() == BookingStatus.CANCELED && transaction.getAvailabilty().size() != 0).findAny().isPresent());
-	}
-	
 	@Test
 	public void doBookingSeatUnavailability() throws ParseException{
 		bookingRequest.setSeatNumbers(Arrays.asList(1,5));

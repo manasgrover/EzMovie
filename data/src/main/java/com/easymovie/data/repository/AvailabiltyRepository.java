@@ -24,7 +24,7 @@ public interface AvailabiltyRepository extends JpaRepository<Availabilty, Long>{
 	
 	public List<Availabilty> findByDateAndAudiTheatreNameAndMovie(Long date,String audiTheatreName,String movie);
 	
-public List<Availabilty> findByDateAndAudiAudiIdAndTimeSlotIdAndMovieAndAvailableIsTrue(Long date,Long audiId, Long timeSlotId, String movie);
+public List<Availabilty> findByDateAndAudiAudiIdAndTimeSlotIdAndMovieAndAvailableIsTrue(Long date,Long audiAudiId, Long timeSlotId, String movie);
 	
 	@Modifying(clearAutomatically=true)
 	@Query("update Availabilty c set c.available = false, c.bookingTransaction = :bookingTransaction where c.available = true and  c.availabilityId in (:availabiltyIds)")

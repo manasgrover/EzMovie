@@ -3,14 +3,12 @@
  */
 package com.easymovie.core.service;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.logging.log4j.core.util.datetime.FixedDateFormat;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,7 +33,6 @@ import com.easymovie.data.repository.TimeSlotRepository;
 import com.easymovie.domain.request.AvailabiltyRequest;
 import com.easymovie.domain.request.AvailabiltyRequestTypeEnum;
 import com.easymovie.domain.request.SlotAvailaibilityRequest;
-import com.easymovie.core.service.BaseTest;
 
 /**
  * @author Manas Grover
@@ -65,7 +62,7 @@ public class AvailabilityServiceTest extends BaseTest{
 	AudiScheduleRepository audiScheduleRepository;
 	
 	@Before
-	public void prepareData() throws ParseException{/*
+	public void prepareData() throws ParseException{
 
 		
 		
@@ -139,7 +136,7 @@ public class AvailabilityServiceTest extends BaseTest{
 		
 		availabiltyRepository.save(availabilty);
 		availabiltyRepository.findAll();
-	*/}
+	}
 	
 	@Test
 	public void checkSlotAvailabilityByMovieName() throws ParseException{

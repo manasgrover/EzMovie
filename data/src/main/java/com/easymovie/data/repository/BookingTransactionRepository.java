@@ -13,6 +13,6 @@ import com.easymovie.data.entity.BookingTransaction;
  */
 public interface BookingTransactionRepository extends JpaRepository<BookingTransaction, Long> {
 
-	public BookingTransaction findByUserEmailAndId(String userEmail, Long bookingId);
+	public BookingTransaction findByUserEmailAndId(String userEmail, Long id);
 
 }
