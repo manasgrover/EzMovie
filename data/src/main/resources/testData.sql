@@ -1,4 +1,4 @@
-insert into tbl_movie(movie_name,release_date,description,rating) values ('don',123445,'bekaar movie','bakwaas');
+insert into tbl_movie(movie_name,release_date,description,rating) values ('RDB',123445,'not good','worst');
 insert into tbl_location (city, country, pin_code, state) values ('NEW_DELHI', 'INDIA', '110074', 'DELHI');
 insert into tbl_theatre (name, location_id) values ('PVR', 1);
 insert into tbl_audi (audi_number, capacity, theatre_id) values (1, 100, 1);

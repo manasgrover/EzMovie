@@ -5,13 +5,17 @@ package com.easymovie.domain.request;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * @author Manas Grover
  *
  */
 public class AvailabiltyRequest extends BaseRequest{
 	
+	@NotNull(message="1")
 	private AvailabiltyRequestTypeEnum availabiltyRequestTypeEnum;
+	@NotNull(message="1")
 	private Date date;
 	private String movieName;
 	private String cityName;

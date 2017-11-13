@@ -5,6 +5,8 @@ package com.easymovie.domain.request;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
 import com.easymovie.data.entity.TimeSlot;
 
 /**
@@ -13,9 +15,13 @@ import com.easymovie.data.entity.TimeSlot;
  */
 public class SlotAvailaibilityRequest extends BaseRequest {
 	
+	@NotNull(message="1")
 	private Date date;
+	@NotNull(message="1")
 	private TimeSlot timeSlot;
+	@NotNull(message="1")
 	private String theatreName;
+	@NotNull(message="1")
 	private String movie;
 	public Date getDate() {
 		return date;
